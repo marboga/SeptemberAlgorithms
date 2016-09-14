@@ -1,6 +1,6 @@
 function oneTo255 () {
-	for (var i = 1; i <= 255; i++) {
-		console.log(i);
+	for (var i = 0; i < 255; i++) {
+		console.log(i+1);
 	}
 }
-console.log(oneTo255);
+console.log(oneTo255())
