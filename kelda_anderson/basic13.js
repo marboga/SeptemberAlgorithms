@@ -1,48 +1,40 @@
-    //Push Front
-    var div = document.getElementById('textLi');
-    var x = [1,2,3];
-    div.textContent = 'The original array ' + x;
-    var text = div.textContent;
+console.log("Hello Coding Dojo World!");
+
+var message = "Welcome to the Dojo";
+console.log(message);
+
+// // Print all integers from 1-255
+function intList(start, end) {
+    var newArray = [];
+    for (var i = start; i <= end; i += 1) {
+        newArray.push(i);
+    }
+    return newArray;
+};
+console.log(intList(1, 255));
 
 
-    var div = document.getElementById('textLi1');
-    for (var i=0; i<18; i++)
-        {
-          x.push(i*5);
-        }
-    div.textContent = 'I have insert the new values at the  end of the array: ' + x;
+// Print all integers from 1-255 and the sum as it prints
+
+function intList2(start, end) {
+    var newArray2 = [];
+    var total = 0;
+    for (var i = start; i <= end; i += 1) {
+        newArray2.push(i);
+    }
+    for (var n = 0; n < newArray2.length; n++) {
+        total += newArray2[n];
+        console.log(total);
+    }
+    return newArray2;
+};
+
+
+console.log(intList2(1, 255));
+
+
+// Given any array print it's largest element
 
 
 
-
-    var div = document.getElementById('textLi2');
-    var x = [1,2,3];
-    for (var i=0; i<18; i++)
-        {
-          x.unshift(i*5);
-        }
-    div.textContent = 'I have insert the new values at the beginning of the array: ' + x;
-
-
-//Pop Front
-    var div = document.getElementById('textLi3');
-    var y = [90,3,4,6,52];
-    div.textContent =  'The original array: ' + y;
-
-
-    var div = document.getElementById('textLi5');
-
-    var newFirst = y[y.length - 1];
-    var popped = y.pop();
-
-      var arr = []
-        for (var i = 0; i < y.length +1; i++ ){
-          if (i === 0){
-                  arr.push(newFirst)
-          }
-          else if (i > 0) {
-                  arr.push(y[i-1])
-          }
-
-      }
-      div.textContent = 'Using .pop and a for loop I removed y[4] and returned the value at the beginning of the array: ' + arr;
+// Create an array w/ all the odd ints between 1 & 255 (inclusive)
