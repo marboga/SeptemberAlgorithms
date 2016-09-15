@@ -137,11 +137,9 @@ function dupRemove(array){
 function removeAtIndex(array, index){
   var i;
   if (index === array.length-1) {
-    value = array[array.length-1];
     array.pop();
   }
   else{
-    value = array[index];
     for (i = index; i < array.length-1; i++) {
       array[i] = array[i+1];
     }
@@ -159,7 +157,7 @@ function repeatRemove(array){
   for (var i = 0; i < array.length-1; i++) {
     var k;
     for (var k = 0; k < array.length; k++) {
-      if(array[i] === array[k] && i != k){
+      if(array[i] === array[k] && i !== k){
         removeAtIndex(array, k);
       }
     }
