@@ -19,14 +19,14 @@ var array= [1,"B",3,4,5,6];
 console.log ("Before " + array)
 var m1="A";
 var m2="Z";
-console.log("filterRange("+array+","+m1+","+m2+")")
-console.log (filterRange(array,"A","Z"))
+console.log("filterRange(["+array+"],"+m1+","+m2+")")
+console.log (filterRange(array,m1,m2))
 console.log ("After " + array)
 
 var array= [1,"B",3,4,5,6];
 console.log ("Before " + array)
-var m1="A";
-var m2="Z";
-console.log("filterRange("+array+","+m1+","+m2+")")
-console.log (filterRange(array,2,4))
+var m1=2;
+var m2=4;
+console.log("filterRange(["+array+"],"+m1+","+m2+")")
+console.log (filterRange(array,m1,m2))
 console.log ("After " + array)

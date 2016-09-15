@@ -19,4 +19,6 @@ else {
   console.log("shiftBy is invalid")
 }
 }
+var array= [1,"A",3,4,5,6];
 console.log (arrayReverse(array,3))
+console.log(array)
