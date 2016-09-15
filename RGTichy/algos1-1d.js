@@ -1,6 +1,4 @@
 array=[2,3,4,5,6,7,8,9];
-
-
 function removeAt(arr,position) {
   if (position <= arr.length-1){
   for (var i=position; i<arr.length-1; i++) {
@@ -8,6 +6,6 @@ function removeAt(arr,position) {
   }
   arr.pop();
   }
-return arr;
+  console.log(arr)
 }
 console.log(removeAt(array,2))
