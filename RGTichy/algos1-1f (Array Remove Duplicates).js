@@ -1,4 +1,3 @@
-arr=[3,3,4,5,6,6,6,7,7,8,9,10,10,10,10,'10','Pam','Pam','Robert'];
 
 function arrayRemoveDuplicates(arr) {
   var last=arr.pop();
@@ -16,4 +15,7 @@ function arrayRemoveDuplicates(arr) {
   }
 return arr;
 }
-console.log(arrayRemoveDuplicates(arr))
+array=[3,3,4,5,6,6,6,7,7,8,9,10,10,10,10,'10','Pam',"Pam",'Robert'];
+console.log(array);
+arrayRemoveDuplicates(array);
+console.log(array)
