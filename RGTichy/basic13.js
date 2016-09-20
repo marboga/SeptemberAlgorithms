@@ -90,7 +90,8 @@ function noNeg(arr)
     return arr;
 }
 //Max/Min/Avg
-var arrnew=[];
+function minMaxAvg(arr) {
+    var arrnew=[];
     var l = arr.length - 1;
     var min = arr[0];
     var max = arr[0];
