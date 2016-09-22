@@ -80,7 +80,7 @@ function greaterY(arr, Y) {
 /* 9. Retrun an array with square products of the original array. */
 function squareVal(arr) {
     for(var i = 0; i < arr.length; i++) {
-        arr[i] = arr[i] * arr[i]
+        arr[i] = arr[i] * arr[i];
     }
     return arr; 
 }
@@ -125,7 +125,7 @@ function swap(arr) {
 function numToStr(arr) {
     for(var i = 0; i < arr.length; i++) {
         if(arr[i] < 0)
-            arr[i] = 'Dojo'
+            arr[i] = 'Dojo';
     }
     return arr; 
 }
