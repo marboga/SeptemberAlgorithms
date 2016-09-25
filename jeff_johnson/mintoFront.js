@@ -11,7 +11,7 @@ function mintoFront(arr){
          }
     }
 
-    for(j=index; j>0; j--)  //move needed array elements to the right
+    for(var j=index; j>0; j--)  //move needed array elements to the right
     {
         arr[j]=arr[j-1];
     }
