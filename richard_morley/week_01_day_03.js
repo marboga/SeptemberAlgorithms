@@ -79,18 +79,18 @@ function concat(arr1, arr2){
     for(var i = 0; i < newarr.length; i++){
         // If y is less than the length of the first array, move the elements
         // from the first array into the new array.
-        console.log(newarr.length);
+        //console.log(newarr.length);
         if(y < arr1.length){
             newarr[i] = arr1[y];
             y++;
-            console.log(y + ' y');
-            console.log(i+ ' i');
+            //console.log(y + ' y');
+            //console.log(i+ ' i');
         // If y is less than the new array length, but more than the first
         // array to be concatinated, start adding array b.
         } else if(y >= arr1.length && y < newarr.length){
             y++;
             q = i - arr1.length;
-            console.log(q+ ' q');
+            //console.log(q+ ' q');
             // The new array still gets data placed in i, but the data comes
             // from the q position of arr2.
             newarr[i] = arr2[q];
