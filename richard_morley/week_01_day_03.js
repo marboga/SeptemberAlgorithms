@@ -10,38 +10,47 @@
 
 //This function works for both positive and netative shift numbers.
 function rotateArr(arr, shift){
-    // Positive array shift.
-    // When the shift value is above zero.
-    if(shift > 0){
-        console.log('Positive Shift');
-        // Loop through i = 0 up to the number of shifts.
-        for(var i = 0; i < shift; i++){
-            // While moving the elements, keep the most significant element
-            // (MSE).
-            var temp = arr[arr.length -1];
-            for(var y = arr.length -1; y > 0; y--){
-                arr[y] = arr[y -1];
+    // Added rules to the shift! If the shift length is == to shift / arr.length, there is no need to shift. 
+    if(shift / arr.length === 1){
+        return arr;
+    }else{
+        // Positive array shift.
+        // I got the below line idea from something another student posted. This will surely keep the code from touching the array a million times!
+        var shift_actual = shift % arr.length;
+        // When the shift value is above zero.
+        if(shift_actual > 0){
+            console.log('Positive Shift');
+            // Loop through i = 0 up to the number of shifts.
+            for(var i = 0; i < shift_actual; i++){
+                //console.log('forward shift');
+                // While moving the elements, keep the most significant element
+                // (MSE).
+                var temp = arr[arr.length -1];
+                for(var y = arr.length -1; y > 0; y--){
+                    arr[y] = arr[y -1];
+                }
+                // Place the MSE at the beginning of the array.
+                arr[0] = temp;
             }
-            // Place the MSE at the beginning of the array.
-            arr[0] = temp;
         }
-    }
-    // Negative array shift. 
-    // When the shift value is below zero.
-    if(shift < 0){
-        console.log('Negative Shift');
-        // Loop through x = 0 down to the number of shifts
-        for(var x = 0; x > shift; x--){
-            // While moving the elements, keep the least significant element
-            // (LSE).
-            //console.log(x);
-            var temp1 = arr[0];
-            // Move the elements of the array down by one index.
-            for(var q = 1; q < arr.length; q++){
-                arr[q -1] = arr[q];
+        // Negative array shift. 
+        // When the shift value is below zero.
+        if(shift_actual < 0){
+            console.log('Negative Shift');
+            // Loop through x = 0 down to the number of shifts
+            for(var x = 0; x > shift_actual; x--){
+                //console.log('backward shift');
+                // While moving the elements, keep the least significant element
+                // (LSE).
+                //console.log(x);
+                var temp1 = arr[0];
+                // Move the elements of the array down by one index.
+                for(var q = 1; q < arr.length; q++){
+                    arr[q -1] = arr[q];
+                }
+                // Place the LSE at the end of the array.
+                arr[arr.length -1] = temp1;
             }
-            // Place the LSE at the end of the array.
-            arr[arr.length -1] = temp1;
         }
     }
     return arr;
@@ -102,8 +111,8 @@ function concat(arr1, arr2){
 
 
 $(document).ready(function(){
-    console.log(rotateArr([1,2,3,4,5,11], 2));
-    console.log(rotateArr([1,2,3,4,5,11], -2));
+    console.log(rotateArr([1,2,3,4,5,11], 3004));
+    console.log(rotateArr([1,2,3,4,5,11], -2000));
     console.log(code_return([45,76,34,65,23,12,34,54,765,76,345,23,54,123,76,98734,45,345], 20, 300));
     console.log(concat(['a',2,3,4,5,11], ['b',2,1,34,43,3,4,5,11]));
 });
