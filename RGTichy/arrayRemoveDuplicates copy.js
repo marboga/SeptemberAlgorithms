@@ -1,24 +1,29 @@
 
 function arrayRemoveDuplicates(arr) {
-  var off=1;
-  for (var i = 0; i < arr.length; i++) {
-    console.log("Before: idx="+i+", off="+off+", arr="+arr)
-    if (arr[i] === arr[i + 1]|| arr[i] > arr[i+1]) {
-      arr[i+1]=arr[i+1+off];
-      off++;
-      i--;
-      console.log("After: idx="+i+", off="+off+", arr="+arr)
+  var offset = 1;
+  var i = 0;
+    while (i < arr.length  && offset<arr.length) {
+      // console.log("i= "+i+",offset="+offset+", arr= ["+arr+"]")
+      if (arr[i] < arr[i + 1]) {
+        // console.log('advanced the index')
+        i++;
+      }
+      else {
+        // console.log("shift arr["+offset+"] to arr["+(i+1)+"]")
+        arr[i+1]=arr[offset];
+        offset++;
+      }
     }
-    else {
-      console.log("--moved forward on index")
-      off--;
+    if (arr[i]<arr[i+1]) {
+      i++;
     }
-  }
-  arr.length=arr.length-off;
+    console.log("i= "+i+",offset="+offset+", arr= ["+arr+"]")
+    arr.length=i+1;
 return(arr);
 }
-array=[3,3,4,5,6,6,6,7,7,8,9,10,10,10,10,'10','Pam',"Pam",'Robert'];
-//array=[3,3,4,4,4,5,5,5];
+array=[3,3,4,5,6,6,6,7,7,8,9,10,10,10,10];
 console.log(array);
-arrayRemoveDuplicates(array);
-console.log(array)
+console.log(arrayRemoveDuplicates(array));
+array=[3,3,4,5,6,6,6,7,7,8,9,10,10,10,11];
+console.log(array);
+console.log(arrayRemoveDuplicates(array));
