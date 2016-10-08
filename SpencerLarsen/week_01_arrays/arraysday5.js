@@ -10,24 +10,25 @@ removeArray([20,30,40,50,60,70],2,4);
 function removeArray(arr,start,stop){
     for(var i = 0; i < arr.length; i++){
         //check if we are at start index and stop index
-        console.log("i: " + i + " - stop " + stop);
         if(i >= start && i <= stop){ // minus one to get array absolute position
             // we found a value, shift every left from this point on, account for 1 extra space to prevent undefined
-            console.log("removing " + arr[i]);
+            console.log(i + " " + start + " " + stop);
+            console.log("removing " + arr[i] + " at " + i);
             for(var x = i; x < arr.length; x++){
                 if(x < arr.length - 1){
                     arr[x] = arr[x+1];
-                } else {
                 }
             }
             stop--; // adjust stop point since we are moving left
             // pop last value since we shifted
-            console.log(arr);
             arr.pop();
-            console.log(arr);
-            console.log("stop " + stop);
-            console.log("new length " + arr.length);
+            console.log(stop);
         }
+    }
+    console.log(start == stop);
+    if (start == stop){ // shift last value over
+        arr[arr.length - 2] = arr[arr.length - 1];
+        arr.pop();
     }
     console.log(arr);
 }
