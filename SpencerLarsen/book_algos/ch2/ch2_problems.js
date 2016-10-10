@@ -691,9 +691,6 @@ function monthToDays(monthNum){
         case 11:
             return 31;
             break;
-        case 12:
-            return 29; //leap year
-            break;
     }
 }
 // console.log(monthToDays(5));
@@ -702,7 +699,7 @@ function dayToMonth(daynum){
     var sum = 0;
     for(var i = 1; i <= 12; i++){
         sum += monthToDays(i);
-        if(sum >= daynum){
+        if(sum >= daynum - 1){
             break;
         }
     }
@@ -734,28 +731,28 @@ function leap_yr(year){
 }
 // fullDate(142);
 
-function weekdayName2(weekdayNum,year){
-    switch (weekdayNum % 7){
+function weekdayName2(weekdayNum){
+    switch (weekdayNum){
         case 0:
-            return "Sunday";
+            return "Saturday";
             break;
         case 1:
-            return "Monday";
+            return "Sunday";
             break;
         case 2:
-            return "Tuesday";
+            return "Monday";
             break;
         case 3:
-            return "Wednesday";
+            return "Tuesday";
             break;
         case 4:
-            return "Thursday";
+            return "Wednesday";
             break;
         case 5:
-            return "Friday";
+            return "Thursday";
             break;
         case 6:
-            return "Saturday";
+            return "Friday";
             break;
         default:
             return "Evidently this isn't a day";
@@ -763,58 +760,73 @@ function weekdayName2(weekdayNum,year){
     }
 }
 
-function fullDate2(datenum){
-    var days = datenum % 365;
-    days -= 1;
-    var years = (datenum - (datenum % 365))/365;
-    var num_leap_days = (years - (years % 4))/4;
-    var sum = 0;
-    for(var i = 1; i <= 12; i++){
-        sum += monthToDays(i);
-        if(sum >= days){
-            break;
-        }
-    }
-    sum -= monthToDays(i);
-
-    // console.log(days);
-    // console.log(years);
-    // console.log(num_leap_days);
-    // console.log(dayToMonth(days - num_leap_days));
-    // console.log(days - num_leap_days - sum);
-    // console.log(2017 + years);
-    console.log(weekdayName2(days + num_leap_days - sum) + ", " + dayToMonth(days - num_leap_days) + " " + (days - num_leap_days - sum) + ", " + (2017 + years));
-}
+// function fullDate2(datenum){
+//     var days = datenum % 365;
+//     days -= 1;
+//     var years = (datenum - (datenum % 365))/365;
+//     var num_leap_days = (years - (years % 4))/4;
+//     var sum = 0;
+//     for(var i = 1; i <= 12; i++){
+//         sum += monthToDays(i);
+//         if(sum >= days){
+//             break;
+//         }
+//     }
+//     sum -= monthToDays(i);
+//
+//     // console.log(days);
+//     // console.log(years);
+//     // console.log(num_leap_days);
+//     // console.log(dayToMonth(days - num_leap_days));
+//     // console.log(days - num_leap_days - sum);
+//     // console.log(2017 + years);
+//     console.log(weekdayName2(days + num_leap_days - sum) + ", " + dayToMonth(days - num_leap_days) + " " + (days - num_leap_days - sum) + ", " + (2017 + years));
+// }
 
 // fullDate2(8475);
 
 function fullDate3(datenum){
-    var days = datenum % 365;
-    days -= 1;
+    // calculate years passed
     var years = (datenum - (datenum % 365))/365;
-    var num_leap_days = 0;
-    for(var i = 2017; i <= 2017 + years; i++){
-        if (leap_yr(i)){
-            num_leap_days++;
+
+    //calculate number of leap years passed
+    var numleapdays = 0;
+    for(var i = 2017; i <= 2017+years; i++){
+        if(leap_yr(i)){
+            numleapdays++;
         }
     }
-    console.log(num_leap_days);
-    var sum = 0;
+
+    //check if current year is leap, subtract one from leap days if so since we are working in current year
+    if(leap_yr(2017+years)){
+        numleapdays -= 1;
+    }
+
+    //adjust remaining days for leap years passed
+    var days_remaining = (datenum - numleapdays) % 365;
+    //calculate how far week is offset. Every year first day of the year shifts by a day, i.e. 2017, the first is a monday, 2017, the first is a tuesday, etc..
+    var dayoffset = years % 7;
+
+    //calculate total days passed non-inclusive of current month
+    var days_passed = 0;
     for(var i = 1; i <= 12; i++){
-        sum += monthToDays(i);
-        if(sum >= days + num_leap_days){
+        days_passed += monthToDays(i);
+        if(days_passed >= days_remaining - 1){
             break;
         }
     }
-    sum -= monthToDays(i);
+    days_passed -= monthToDays(i); // remove current month to get days in current month passed
+    //account for leap day if leap year and passed february
+    if(leap_yr(2017+years) && i > 2){
+        days_passed += 1;
+    }
 
-    console.log("sum " + sum);
-    console.log(years);
-    console.log(num_leap_days);
-    console.log(dayToMonth(days - num_leap_days));
-    // console.log(days + num_leap_days - sum);
-    console.log(2017 + years);
-    // console.log(weekdayName2(days - sum) + ", " + dayToMonth(days) + " " + (days - sum) + ", " + (2017 + years));
+    console.log(weekdayName2((((days_remaining - days_passed) % 6) + dayoffset) % 7) + ", " + dayToMonth(days_remaining) + " " + (days_remaining - days_passed) + ", " + (2017+years));
+
 }
 
 fullDate3(139947);
+fullDate3(139957);
+fullDate3(139977);
+fullDate3(139978);
+fullDate3(139979);

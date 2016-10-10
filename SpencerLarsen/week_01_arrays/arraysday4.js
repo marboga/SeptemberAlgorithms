@@ -75,6 +75,7 @@ function nthLargest(arr,nth){
         console.log("largest " + largest);
         console.log("nth " + nthvalue);
         findlvl++;
+        console.log("findlvl " + findlvl);
     }
     return nthvalue;
 }
