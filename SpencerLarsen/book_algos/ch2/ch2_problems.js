@@ -731,35 +731,6 @@ function leap_yr(year){
 }
 // fullDate(142);
 
-function weekdayName2(weekdayNum){
-    switch (weekdayNum){
-        case 0:
-            return "Saturday";
-            break;
-        case 1:
-            return "Sunday";
-            break;
-        case 2:
-            return "Monday";
-            break;
-        case 3:
-            return "Tuesday";
-            break;
-        case 4:
-            return "Wednesday";
-            break;
-        case 5:
-            return "Thursday";
-            break;
-        case 6:
-            return "Friday";
-            break;
-        default:
-            return "Evidently this isn't a day";
-            break;
-    }
-}
-
 // function fullDate2(datenum){
 //     var days = datenum % 365;
 //     days -= 1;

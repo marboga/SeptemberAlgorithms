@@ -43,7 +43,7 @@
 //     var secondlargest = 0;
 //     if(arr.length < 2){
 //         return null;
-//         } else{
+//     } else{
 //         for(var i = 0; i < arr.length; i++){
 //             if(arr[i] > largest && arr[i] > secondlargest){
 //                 secondlargest = largest;
@@ -57,25 +57,25 @@
 // }
 //
 //nth largest
-console.log(nthLargest([42,4,1,Math.PI,7],3));
-function nthLargest(arr,nth){
-    var findlvl = 0;
-    var largest = 0;
-    var nthvalue = 0;
-    while(findlvl != nth){
-        for(var i = 0; i < arr.length; i++){
-            if(arr[i] < largest && arr[i] > nthvalue){
-                nthvalue = largest;
-                largest = arr[i];
-            } else if (arr[i] < largest && nthvalue < arr[i]){
-                nthvalue = arr[i];
-            }
-        }
-        console.log("findlvl " + findlvl);
-        console.log("largest " + largest);
-        console.log("nth " + nthvalue);
-        findlvl++;
-        console.log("findlvl " + findlvl);
-    }
-    return nthvalue;
-}
+// console.log(nthLargest([42,4,1,Math.PI,7],3));
+// function nthLargest(arr,nth){
+//     var findlvl = 0;
+//     var largest = 0;
+//     var nthvalue = 0;
+//     while(findlvl != nth){
+//         for(var i = 0; i < arr.length; i++){
+//             if(arr[i] < largest && arr[i] > nthvalue){
+//                 nthvalue = largest;
+//                 largest = arr[i];
+//             } else if (arr[i] < largest && nthvalue < arr[i]){
+//                 nthvalue = arr[i];
+//             }
+//         }
+//         console.log("findlvl " + findlvl);
+//         console.log("largest " + largest);
+//         console.log("nth " + nthvalue);
+//         findlvl++;
+//         console.log("findlvl " + findlvl);
+//     }
+//     return nthvalue;
+// }
